@@ -37,7 +37,8 @@ export const shares = pgTable(
     id: uuid().defaultRandom().primaryKey(),
     slug: varchar({ length: 6 })
       .$defaultFn(() => createId())
-      .unique(),
+      .unique()
+      .notNull(),
     title: varchar({ length: 255 }),
     content: text().notNull(),
     is_public: boolean().default(false).notNull(),
