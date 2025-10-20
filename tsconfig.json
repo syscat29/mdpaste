@@ -16,10 +16,10 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@/components/*": ["./src/components/*"],
-      "@/services": ["./src/services/*"],
-      "@/hooks": ["./src/hooks/*"],
-      "@/utils": ["./src/utils/*"]
+      "@components/*": ["./src/components/*"],
+      "@services/*": ["./src/services/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@utils/*": ["./src/utils/*"]
     },
     "esModuleInterop": true,
     "verbatimModuleSyntax": true,

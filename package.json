@@ -13,6 +13,7 @@
     "@paralleldrive/cuid2": "^3.1.0",
     "@react-router/node": "^7.9.2",
     "@react-router/serve": "^7.9.2",
+    "codemirror": "^6.0.2",
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.44.6",
     "isbot": "^5.1.31",
