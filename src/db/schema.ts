@@ -21,8 +21,8 @@ export const users = pgTable(
     username: varchar({ length: 25 }).unique().notNull(),
     email: varchar({ length: 255 }).unique().notNull(),
     password: varchar({ length: 255 }).notNull(),
-    created_at: timestamp({ mode: 'date' }).defaultNow().notNull(),
-    updated_at: timestamp({ mode: 'date' }).defaultNow().notNull(),
+    created_at: timestamp().defaultNow().notNull(),
+    updated_at: timestamp().defaultNow().notNull(),
   },
   (table) => [uniqueIndex('id_idx').on(table.id)],
 )
