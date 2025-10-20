@@ -1,14 +1,14 @@
 export default function About() {
   return (
     <>
-      <head>
-        <title>About</title>
-        <meta name='description' content='Welcome to React Router!' />
-      </head>
+      <title>About</title>
+      <meta name='description' content='Welcome to React Router!' />
 
-      <div className='wrapper'>
-        <h1>About Page</h1>
-      </div>
+      <section className='flex-1'>
+        <div className='wrapper'>
+          <h1>About Page</h1>
+        </div>
+      </section>
     </>
   )
 }
