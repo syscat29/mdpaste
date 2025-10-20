@@ -33,15 +33,9 @@ export default function Home() {
           </h1>
 
           <Form method='post' className='grid space-y-4'>
-            <div className='grid grid-cols-5 gap-4'>
-              <div className='grid space-y-2 col-span-4'>
-                <span>Title</span>
-                <Input name='title' />
-              </div>
-              <div className='grid space-y-2'>
-                <span>Syntax</span>
-                <Input name='syntax' />
-              </div>
+            <div className='grid space-y-2'>
+              <span>Title</span>
+              <Input name='title' />
             </div>
 
             <Textarea name='content' className='min-h-72' />
