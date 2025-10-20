@@ -9,7 +9,7 @@ export default [
   layout('routes/_layout.tsx', [
     index('routes/home.tsx'),
     route('about', 'routes/about.tsx'),
-    route('p/:slug', 'routes/paste.tsx'),
+    route('s/:slug', 'routes/share.tsx'),
   ]),
 
   // Catch undefined routes
