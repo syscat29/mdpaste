@@ -34,7 +34,7 @@ export default function Home() {
 
           <Form method='post' className='grid space-y-4'>
             <div className='grid space-y-2'>
-              <span>Title</span>
+              <span className='font-medium text-sm'>Title</span>
               <Input name='title' />
             </div>
 
