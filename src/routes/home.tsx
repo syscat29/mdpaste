@@ -6,7 +6,7 @@ import { Input } from '@/components/Input'
 import { Textarea } from '@/components/Textarea'
 import db from '../db'
 import { shares } from '@/db/schema'
-import CodeMirror, { lineNumbers } from '@uiw/react-codemirror'
+import CodeMirror from '@uiw/react-codemirror'
 import { markdown } from '@codemirror/lang-markdown'
 import { languages } from '@codemirror/language-data'
 
@@ -15,12 +15,16 @@ export async function action({ request }: Route.ActionArgs) {
   let title = formData.get('title') as string
   let content = formData.get('content') as string
 
-  const paste = await db
-    .insert(shares)
-    .values({ title: title, content: content, is_public: false })
-    .returning({ slug: shares.slug })
+  try {
+    const paste = await db
+      .insert(shares)
+      .values({ title: title, content: content, is_public: false })
+      .returning({ slug: shares.slug })
 
-  return redirect(`/s/${paste[0].slug}`)
+    return redirect(`/s/${paste[0].slug}`)
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 export default function Home() {

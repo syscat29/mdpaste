@@ -7,20 +7,26 @@ import { markedHighlight } from 'marked-highlight'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/stackoverflow-dark.css'
 import DOMPurify from 'isomorphic-dompurify'
+import { redirect } from 'react-router'
 
 export async function loader({ params }: Route.LoaderArgs) {
-  const data = await db
-    .select({
-      title: shares.title,
-      content: shares.content,
-      created_at: shares.created_at,
-    })
-    .from(shares)
-    .where(eq(shares.slug, params.slug))
+  try {
+    const data = await db
+      .select({
+        title: shares.title,
+        content: shares.content,
+        created_at: shares.created_at,
+      })
+      .from(shares)
+      .where(eq(shares.slug, params.slug))
 
-  if (!data) throw new Response('Not Found', { status: 404 })
+    if (!data || data.length === 0)
+      throw new Response('Not Found', { status: 404 })
 
-  return data[0]
+    return data[0]
+  } catch (e) {
+    throw new Response('Server Error', { status: 500 })
+  }
 }
 
 export default function Paste({ loaderData }: Route.ComponentProps) {
