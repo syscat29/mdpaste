@@ -7,7 +7,6 @@ import { markedHighlight } from 'marked-highlight'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/stackoverflow-dark.css'
 import DOMPurify from 'isomorphic-dompurify'
-import { redirect } from 'react-router'
 
 export async function loader({ params }: Route.LoaderArgs) {
   try {
