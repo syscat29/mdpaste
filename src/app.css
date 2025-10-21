@@ -20,3 +20,161 @@ body {
 .wrapper {
   @apply container max-w-4xl mx-auto px-4;
 }
+
+.cm-editor {
+  @apply rounded-md overflow-hidden bg-neutral-900 border border-neutral-800 max-w-4xl;
+
+  & .cm-selectionBackground,
+  ::selection {
+    @apply bg-sky-700/50!;
+  }
+
+  & .cm-gutters {
+    @apply bg-neutral-900 text-white border-neutral-800;
+  }
+
+  & .cm-activeLineGutter,
+  & .cm-activeLine {
+    @apply bg-neutral-700;
+  }
+}
+
+.markdown {
+  @apply bg-neutral-900 p-4 border border-neutral-800 rounded-md wrap-break-word leading-loose;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold mt-6 mb-4;
+  }
+
+  h1 {
+    @apply text-[2rem] border-b border-neutral-700;
+
+    &:first-of-type {
+      @apply mt-0;
+    }
+  }
+
+  h2 {
+    @apply text-[1.5rem] border-b border-neutral-700;
+  }
+
+  h3 {
+    @apply text-[1.25rem];
+  }
+
+  h4 {
+    @apply text-[1rem];
+  }
+
+  h5 {
+    @apply text-[0.875rem];
+  }
+
+  h6 {
+    @apply text-[0.85rem] text-neutral-700;
+  }
+
+  p {
+    @apply my-4;
+  }
+
+  ul,
+  ol {
+    @apply pl-8 mb-4;
+  }
+
+  ul {
+    @apply list-disc;
+  }
+
+  blockquote {
+    @apply m-0 px-4 border-l-2 border-neutral-700 text-neutral-600;
+  }
+
+  code,
+  pre {
+    @apply bg-neutral-950 rounded-sm border border-neutral-800 leading-normal;
+  }
+
+  code {
+    @apply py-1 px-2;
+  }
+
+  pre {
+    @apply p-4;
+
+    code {
+      @apply border-0 p-0;
+    }
+  }
+
+  table {
+    @apply border-collapse border-spacing-0 block w-full overflow-auto mb-4;
+
+    th,
+    td {
+      @apply border border-neutral-800 py-1.5 px-3;
+    }
+
+    th {
+      @apply font-semibold;
+    }
+
+    tr {
+      @apply border-t border-neutral-800;
+    }
+
+    thead {
+      tr {
+        @apply bg-neutral-700;
+      }
+    }
+
+    tbody {
+      tr:nth-of-type(even) {
+        @apply bg-neutral-950;
+      }
+    }
+  }
+
+  img {
+    @apply max-w-full box-content bg-neutral-900;
+  }
+
+  hr {
+    @apply border-t border-neutral-700 my-6;
+  }
+
+  a {
+    @apply text-blue-500;
+
+    &:hover {
+      @apply underline;
+    }
+  }
+
+  strong {
+    @apply font-semibold;
+  }
+
+  em {
+    @apply italic;
+  }
+
+  del {
+    @apply line-through;
+  }
+
+  input[type='checkbox'] {
+    @apply m-[0_0.2em_0.25em_-1.5em] align-middle;
+  }
+
+  *:last-of-type {
+    @apply mb-0;
+  }
+}
