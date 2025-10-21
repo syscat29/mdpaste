@@ -6,7 +6,7 @@ import { Input } from '@/components/Input'
 import { Textarea } from '@/components/Textarea'
 import db from '../db'
 import { shares } from '@/db/schema'
-import CodeMirror from '@uiw/react-codemirror'
+import CodeMirror, { lineNumbers } from '@uiw/react-codemirror'
 import { markdown } from '@codemirror/lang-markdown'
 import { languages } from '@codemirror/language-data'
 
@@ -42,13 +42,13 @@ export default function Home() {
 
             <CodeMirror
               content={content}
-              height='300px'
+              height='450px'
               extensions={[markdown({ codeLanguages: languages })]}
               theme={'dark'}
               onChange={setContent}
             />
 
-            <Textarea name='content' hidden value={content} />
+            <Textarea name='content' hidden value={content} readOnly />
             <div className='flex justify-end'>
               <Button type='submit'>Create</Button>
             </div>

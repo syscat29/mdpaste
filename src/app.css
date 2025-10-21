@@ -22,7 +22,7 @@ body {
 }
 
 .cm-editor {
-  @apply rounded-md overflow-hidden bg-neutral-900 border border-neutral-800 max-w-4xl;
+  @apply rounded-md overflow-hidden bg-neutral-900 border border-neutral-800 max-w-4xl text-white;
 
   & .cm-selectionBackground,
   ::selection {
@@ -30,12 +30,12 @@ body {
   }
 
   & .cm-gutters {
-    @apply bg-neutral-900 text-white border-neutral-800;
+    @apply bg-neutral-900 text-neutral-500 border-neutral-800;
   }
 
   & .cm-activeLineGutter,
   & .cm-activeLine {
-    @apply bg-neutral-700;
+    @apply bg-transparent;
   }
 }
 

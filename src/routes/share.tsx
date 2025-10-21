@@ -2,7 +2,11 @@ import type { Route } from './+types/share'
 import db from '@/db'
 import { shares } from '@/db/schema'
 import { eq } from 'drizzle-orm'
-import { marked } from 'marked'
+import { Marked } from 'marked'
+import { markedHighlight } from 'marked-highlight'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/stackoverflow-dark.css'
+import DOMPurify from 'isomorphic-dompurify'
 
 export async function loader({ params }: Route.LoaderArgs) {
   const data = await db
@@ -14,9 +18,7 @@ export async function loader({ params }: Route.LoaderArgs) {
     .from(shares)
     .where(eq(shares.slug, params.slug))
 
-  if (!data) {
-    throw new Response('Not Found', { status: 404 })
-  }
+  if (!data) throw new Response('Not Found', { status: 404 })
 
   return data[0]
 }
@@ -25,8 +27,20 @@ export default function Paste({ loaderData }: Route.ComponentProps) {
   const { title, content, created_at } = loaderData
   const createdAt = new Date(created_at).toLocaleDateString()
 
-  marked.use({
-    gfm: true,
+  const marked = new Marked(
+    markedHighlight({
+      emptyLangClass: 'hljs',
+      langPrefix: 'language-',
+      highlight(code, lang) {
+        const language = hljs.getLanguage(lang) ? lang : 'plaintext'
+        return hljs.highlightAuto(code).value
+      },
+    }),
+  )
+
+  const dirtyHTML = marked.parse(content) as any
+  const sanitizedHTML = DOMPurify.sanitize(dirtyHTML, {
+    USE_PROFILES: { html: true },
   })
 
   return (
@@ -39,7 +53,7 @@ export default function Paste({ loaderData }: Route.ComponentProps) {
           <div className='text-sm text-white/70 mb-4'>{createdAt}</div>
           <div
             className='markdown'
-            dangerouslySetInnerHTML={{ __html: marked.parse(content) }}
+            dangerouslySetInnerHTML={{ __html: sanitizedHTML }}
           ></div>
         </div>
       </section>
