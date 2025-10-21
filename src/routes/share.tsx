@@ -38,7 +38,7 @@ export default function Paste({ loaderData }: Route.ComponentProps) {
     }),
   )
 
-  const dirtyHTML = marked.parse(content) as any
+  const dirtyHTML = marked.parse(content) as string
   const sanitizedHTML = DOMPurify.sanitize(dirtyHTML, {
     USE_PROFILES: { html: true },
   })
