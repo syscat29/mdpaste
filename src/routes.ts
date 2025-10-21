@@ -4,7 +4,6 @@ import {
   layout,
   route,
 } from '@react-router/dev/routes'
-import { redirect } from 'react-router'
 
 export default [
   layout('routes/_layout.tsx', [

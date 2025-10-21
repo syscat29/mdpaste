@@ -19,8 +19,9 @@ export async function loader({ params }: Route.LoaderArgs) {
       .from(shares)
       .where(eq(shares.slug, params.slug))
 
-    if (!data || data.length === 0)
+    if (!data || data.length === 0) {
       throw new Response('Not Found', { status: 404 })
+    }
 
     return data[0]
   } catch (e) {
